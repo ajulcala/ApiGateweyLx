@@ -6,16 +6,86 @@ spring:
       routes:
 
         - id: service-profile
-          uri: http://localhost:8010/   #uri: lb://SERVICE-PROFILE
+          uri: lb://service-profile   #uri:  http://localhost:8010/
           predicates:
           - Path=/api/profile/**
           filters: StripPrefix=2
 
         - id: service-customer
-          uri: http://localhost:8011/   #uri: lb://SERVICE-CUSTOMER
+          uri: lb://service-customer  #uri: lb://SERVICE-CUSTOMER http://localhost:8011/
           predicates:
           - Path=/api/customer/**
           filters: StripPrefix=2
+
+        - id: service-creditcard
+          uri: lb://service-creditcard  #uri: lb://SERVICE-CREDITCARD http://localhost:8012/
+          predicates:
+          - Path=/api/creditcard/**
+          filters: StripPrefix=2
+
+        - id: service-saving-account
+          uri: lb://service-saving-account   #uri: lb://SERVICE-SAVING-ACCOUNT http://localhost:8013/
+          predicates:
+          - Path=/api/saving-account/**
+          filters: StripPrefix=2
+
+        - id: service-current-account
+          uri: lb://service-current-account   #uri: lb://SERVICE-CURRENT-ACCOUNT http://localhost:8014/
+          predicates:
+          - Path=/api/current-account/**
+          filters: StripPrefix=2
+
+        - id: service-fixed-term
+          uri: lb://service-fixed-term   #uri: lb://SERVICE-FIXED-TERM http://localhost:8015/
+          predicates:
+          - Path=/api/fixed-account/**
+          filters: StripPrefix=2
+
+        - id: service-credit-charge
+          uri: lb://service-credit-charge   #uri: lb://SERVICE-CREDIT-CHARGE http://localhost:8016/
+          predicates:
+          - Path=/api/credit-charge/**
+          filters: StripPrefix=2
+
+        - id: service-current-transaction
+          uri: lb://service-current-transaction   #uri: lb://SERVICE-CURRENT-TRANSACTION http://localhost:8017/
+          predicates:
+          - Path=/api/current-account-transaction/**
+          filters: StripPrefix=2
+
+        - id: service-saving-transaction
+          uri: lb://service-saving-transaction  #uri: lb://SERVICE-SAVING-TRANSACTION http://localhost:8018/
+          predicates:
+          - Path=/api/saving-account-transaction/**
+          filters: StripPrefix=2
+
+        - id: service-fixed-transaction
+          uri: lb://service-fixed-transaction  #uri: lb://SERVICE-FIXED-TRANSACTION http://localhost:8019/
+          predicates:
+          - Path=/api/fixed-term-transaction/**
+          filters: StripPrefix=2
+
+        - id: service-transfer-bank
+          uri: lb://service-transfer-bank   #uri: lb://SERVICE-TRANSFER-BANK http://localhost:8020/
+          predicates:
+          - Path=/api/tranfer-bank/**
+          filters: StripPrefix=2
+
+        - id: service-reports
+          uri: lb://service-reports   #uri: lb://SERVICE-REPORTS http://localhost:8021/
+          predicates:
+          - Path=/api/reports/**
+          filters: StripPrefix=2
+
+        - id: service-creditpay
+          uri: lb://service-creditpay   #uri: lb://SERVICE-CREDITPAY http://localhost:8022/
+          predicates:
+          - Path=/api/credit-pay/**
+          filters: StripPrefix=2
+
+
+
+
 
 
 server:
@@ -25,4 +95,5 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      #defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka-server:8761/eureka
