@@ -83,10 +83,17 @@ spring:
           - Path=/api/credit-pay/**
           filters: StripPrefix=2
 
+        - id: yanki-account
+          uri: lb://yanki-account   #uri: lb://YANKI-ACCOUNT http://localhost:8059/
+          predicates:
+          - Path=/api/yanki-account/**
+          filters: StripPrefix=2
 
-
-
-
+        - id: yanki-transaction
+          uri: lb://yanki-transaction   #uri: lb://YANKI-TRANSACTION http://localhost:8059/
+          predicates:
+          - Path=/api/yanki-transaction/**
+          filters: StripPrefix=2
 
 server:
   port: 8090
@@ -95,5 +102,5 @@ server:
 eureka:
   client:
     serviceUrl:
-      #defaultZone: http://localhost:8761/eureka
-      defaultZone: http://eureka-server:8761/eureka
+      defaultZone: http://localhost:8761/eureka
+      #defaultZone: http://eureka-server:8761/eureka    #docker
